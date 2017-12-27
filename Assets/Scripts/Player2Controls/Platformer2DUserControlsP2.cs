@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using InControl;
+using UnityEngine.UI;
 
 namespace XboxControllerControls
 {
@@ -13,6 +14,8 @@ namespace XboxControllerControls
         private float jump_timer;
         public float jump_cooldown = 1f;
         private bool can_jump = false;
+        public Image jumpCooldownDisplay;
+        private MetricManager mm;
 
 
 
@@ -20,6 +23,7 @@ namespace XboxControllerControls
         {
             player = transform.GetComponent<Player>();
             jump_timer = 0;
+            mm = GameObject.Find("EventSystem").GetComponent<MetricManager>();
         }
 
 
@@ -43,6 +47,8 @@ namespace XboxControllerControls
 			if (player.Actions.AButton.WasPressed && can_jump) {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0f, jump_force);
                 jump_timer = jump_cooldown;
+                jumpCooldownDisplay.fillAmount = 1;
+                mm.AddToMetric2(1);
             }
             
 

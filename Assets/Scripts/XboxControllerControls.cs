@@ -13,7 +13,7 @@ namespace XboxControllerControls
         public PlayerAction AimRight;
         public PlayerAction Fire;
 		public PlayerAction LeftTrigger;
-        //public PlayerAction BButton;
+        public PlayerAction BButton;
         public PlayerAction YButton;
         public PlayerAction AButton;
         public PlayerAction XButton;
@@ -21,7 +21,6 @@ namespace XboxControllerControls
         public PlayerAction Back;
         public PlayerOneAxisAction Move;
         public PlayerOneAxisAction MoveAim;
-		//public PlayerOneAxisAction MoveAim2;
 
         public MyCharacterActions()
         {
@@ -31,7 +30,7 @@ namespace XboxControllerControls
             AimRight = CreatePlayerAction("Aim Right");
 			LeftTrigger = CreatePlayerAction("Left Trigger");
 			Fire = CreatePlayerAction("Right Trigger");
-			//BButton = CreatePlayerAction("B Button");
+			BButton = CreatePlayerAction("B Button");
 			YButton = CreatePlayerAction("Y Button");
             AButton = CreatePlayerAction("A Button");
             XButton = CreatePlayerAction("X Button");
@@ -53,7 +52,7 @@ namespace XboxControllerControls
             characterActions.AimRight.AddDefaultBinding(InputControlType.RightStickRight);
 			characterActions.Fire.AddDefaultBinding(InputControlType.RightTrigger);
 			characterActions.LeftTrigger.AddDefaultBinding(InputControlType.LeftTrigger);
-			//characterActions.BButton.AddDefaultBinding(InputControlType.Action2);
+			characterActions.BButton.AddDefaultBinding(InputControlType.Action2);
 			characterActions.YButton.AddDefaultBinding(InputControlType.Action4);
 			characterActions.AButton.AddDefaultBinding(InputControlType.Action1);
             characterActions.XButton.AddDefaultBinding(InputControlType.Action3);
@@ -63,24 +62,6 @@ namespace XboxControllerControls
             return characterActions;
         }
 
-        public static MyCharacterActions CreateAltBindings()
-        {
-            MyCharacterActions characterActions = new MyCharacterActions();
-
-            characterActions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
-            characterActions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
-            characterActions.AimLeft.AddDefaultBinding(InputControlType.LeftTrigger);
-            characterActions.AimRight.AddDefaultBinding(InputControlType.RightTrigger);
-            characterActions.Fire.AddDefaultBinding(InputControlType.Action2);
-            characterActions.LeftTrigger.AddDefaultBinding(InputControlType.LeftTrigger);
-            //characterActions.BButton.AddDefaultBinding(InputControlType.Action2);
-            characterActions.YButton.AddDefaultBinding(InputControlType.Action4);
-            characterActions.AButton.AddDefaultBinding(InputControlType.Action1);
-            characterActions.XButton.AddDefaultBinding(InputControlType.Action3);
-            characterActions.Start.AddDefaultBinding(InputControlType.Start);
-            characterActions.Back.AddDefaultBinding(InputControlType.Back);
-
-            return characterActions;
-        }
+        
     }
 }

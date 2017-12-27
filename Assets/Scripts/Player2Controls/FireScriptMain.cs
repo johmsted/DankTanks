@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using InControl;
 
@@ -12,6 +13,8 @@ namespace XboxControllerControls {
         public GameObject power;
         public GameObject LockSign;
         public float charge_speed;
+        public Image shotCooldownDisplay;
+        private MetricManager mm;
 
         private Player player;
 
@@ -20,11 +23,15 @@ namespace XboxControllerControls {
         private bool shot = false;
         private int buttonCheck = 0;
 
+		public AudioSource audios;
+
         void Start()
         {
             player = transform.GetComponentInParent<Player>();
             shotTimer = shotTimeLimit;
             LockSign.GetComponent<SpriteRenderer>().enabled = false;
+            mm = GameObject.Find("EventSystem").GetComponent<MetricManager>();
+
         }
 
         void Update()
@@ -39,9 +46,6 @@ namespace XboxControllerControls {
                     return;
                 }
             }
-
-            
-
 
             shotTimer -= Time.deltaTime;
 
@@ -63,7 +67,7 @@ namespace XboxControllerControls {
 
 			if (player.Actions.Fire.WasReleased && !shot)
             {
-                Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, 40f))) as Rigidbody2D;
+                Rigidbody2D bulletInstance = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(new Vector3(0, 0, 40f))) as Rigidbody2D;
                 bulletInstance.velocity = transform.right * fireHold;
                 Physics2D.IgnoreCollision(bulletInstance.GetComponent<Collider2D>(), GetComponent<Collider2D>());
                 fireHold = 0.0f;
@@ -71,8 +75,12 @@ namespace XboxControllerControls {
                 scaled_power = 0;
                 power.transform.localScale = new Vector3(scaled_power, power.transform.localScale.y, power.transform.localScale.z);
                 buttonCheck = 0;
+                shotCooldownDisplay.fillAmount = 1;
+                mm.AddToMetric1(1);
+				GetComponent<AudioSource>().Play ();
             }
-
+            
+            /*
             if (!shot)
             {
                 LockSign.GetComponent<SpriteRenderer>().enabled = false;
@@ -81,6 +89,7 @@ namespace XboxControllerControls {
             {
                 LockSign.GetComponent<SpriteRenderer>().enabled = true;
             }
+            */
 
         }
     }

@@ -2,20 +2,22 @@
 using System.Collections;
 
 public class DelayBulletCollider : MonoBehaviour {
+    float delay;
+    
 
 	// Use this for initialization
 	void Start () {
-        gameObject.tag = "Untagged";
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        float timer = .012f;
-        timer -= Time.deltaTime;
-        if(timer <= 0)
-        {
-            gameObject.tag = "projectile";
-        }
 
+        delay = .1f;
 	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        delay -= Time.deltaTime;
+        if (delay <= 0)
+        {
+            gameObject.layer = 12;            
+        }
+    }
 }

@@ -6,6 +6,10 @@ TagManager:
   tags:
   - projectile
   - explosion
+  - tank
+  - Fire
+  - smallProjectile
+  - smallExplosion
   layers:
   - Default
   - TransparentFX
@@ -16,11 +20,11 @@ TagManager:
   - 
   - 
   - DestructibleTerrain
-  - 
-  - 
-  - 
-  - 
-  - 
+  - NoCollideTank
+  - Shield
+  - Shockwave
+  - Bullet
+  - SmallBullet
   - 
   - 
   - 

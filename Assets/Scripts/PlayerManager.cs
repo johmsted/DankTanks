@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using InControl;
+using UnityEngine.UI;
 
 
 namespace XboxControllerControls
@@ -15,12 +16,29 @@ namespace XboxControllerControls
         public GameObject player1;
         public GameObject player2;
 
+        public GameObject p1_entered;
+        public GameObject p2_entered;
+
+		public AudioSource musicPlayer;
+		public AudioClip mainMusic;
+		public AudioClip desertMusic;
+        public AudioClip snowMusic;
+        public AudioClip forestMusic;
+
+		public ParticleSystem sandParticle;
+        
+        public SpawnLevel musicDecider;
+
         const int maxPlayers = 2;
         
         List<Player> players = new List<Player>(maxPlayers);
 
         MyCharacterActions joystickListener;
 
+		void Start()
+		{
+			sandParticle.Stop ();
+		}
 
         void OnEnable()
         {
@@ -47,13 +65,38 @@ namespace XboxControllerControls
                     CreatePlayer(inputDevice);
                 }
             }
+            if(players.Count == 2)
+            {
+                if (joystickListener.Start.WasPressed)
+                {
+                    p1_entered.SetActive(false);
+                    p2_entered.SetActive(false);
+                    
+                    GameObject.Find("IntroImage").GetComponent<Image>().enabled = false;
+                    GameObject.Find("JoinText").GetComponent<Text>().enabled = false;
+                    if (musicDecider.levelNum == 0)
+                    {
+                        musicPlayer.clip = desertMusic;
+                    }
+                    else if(musicDecider.levelNum == 1)
+                    {
+                        musicPlayer.clip = snowMusic;
+                    }else if(musicDecider.levelNum == 2)
+                    {
+                        musicPlayer.clip = forestMusic;
+                    }
+					musicPlayer.Play ();
+					musicPlayer.loop = true;
+					sandParticle.Play ();
+                }
+            }
 
         }
 
 
         bool JoinButtonWasPressedOnListener(MyCharacterActions actions)
         {
-            return actions.Start.WasPressed;
+            return actions.AButton.WasPressed;
         }
 
 
@@ -91,7 +134,7 @@ namespace XboxControllerControls
 
         Player CreatePlayer(InputDevice inputDevice)
         {
-            if (players.Count < maxPlayers && players.Count == 0)
+            if (players.Count == 0)
             {
                 // Pop a position off the list. We'll add it back if the player is removed.
 
@@ -103,20 +146,21 @@ namespace XboxControllerControls
                 player1.GetComponent<Player>().Actions = actions;
 
                 players.Add(player1.GetComponent<Player>());
+                p1_entered.SetActive(true);
 
                 return player1.GetComponent<Player>();
-            }else if(players.Count < maxPlayers && players.Count == 1)
-            {
-                var actions = MyCharacterActions.CreateAltBindings();
+            }else if(players.Count == 1){
+                var actions = MyCharacterActions.CreateDefaultBindings();
                 actions.Device = inputDevice;
 
                 player2.GetComponent<Player>().Actions = actions;
 
                 players.Add(player2.GetComponent<Player>());
+                p2_entered.SetActive(true);
+
 
                 return player2.GetComponent<Player>();
             }
-
             return null;
         }
 

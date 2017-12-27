@@ -26,7 +26,7 @@ GameObject:
   - 114: {fileID: 114000011027871982}
   m_Layer: 0
   m_Name: SmallExplosion
-  m_TagString: explosion
+  m_TagString: smallExplosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,7 +12,7 @@ public class CamShake : MonoBehaviour
 
     // Amplitude of the shake. A larger value shakes the camera harder.
     public float shakeAmount = 0.7f;
-    public float decreaseFactor = 1.0f;
+    public float decreaseFactor = 1f;
 
     Vector3 originalPos;
 
@@ -42,5 +42,10 @@ public class CamShake : MonoBehaviour
             shakeDuration = 0f;
             camTransform.localPosition = originalPos;
         }
+    }
+    public void addDuration(float time)
+    {
+        shakeDuration += time;
+        GetComponent<AudioSource>().Play(0);
     }
 }

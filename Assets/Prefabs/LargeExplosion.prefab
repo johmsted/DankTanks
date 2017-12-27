@@ -23,7 +23,6 @@ GameObject:
   - 58: {fileID: 58000010140556190}
   - 50: {fileID: 50000013315262260}
   - 114: {fileID: 114000013375216278}
-  - 114: {fileID: 114000011027871982}
   - 114: {fileID: 114000013491176818}
   m_Layer: 0
   m_Name: LargeExplosion
@@ -76,21 +75,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &114000011027871982
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011910773262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52cee78baa4cd8419572dd0d04a979b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camTransform: {fileID: 0}
-  shakeDuration: 0
-  shakeAmount: 0.7
-  decreaseFactor: 1
 --- !u!114 &114000013375216278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52cee78baa4cd8419572dd0d04a979b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTransform: {fileID: 4000010310496598}
+  camTransform: {fileID: 0}
   shakeDuration: 2
   shakeAmount: 3
   decreaseFactor: 1

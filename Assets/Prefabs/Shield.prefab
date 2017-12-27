@@ -21,7 +21,7 @@ GameObject:
   - 224: {fileID: 224000012165708956}
   - 222: {fileID: 222000011782074070}
   - 114: {fileID: 114000010489850728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - 212: {fileID: 212000012025122026}
   - 61: {fileID: 61000011014569720}
   - 114: {fileID: 114000011819259126}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - 223: {fileID: 223000011383514510}
   - 114: {fileID: 114000010461517862}
   - 114: {fileID: 114000013228071434}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - 224: {fileID: 224000010906278268}
   - 222: {fileID: 222000010346062258}
   - 114: {fileID: 114000010637947468}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}

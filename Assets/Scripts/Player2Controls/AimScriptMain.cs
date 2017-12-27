@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using InControl;
 
@@ -13,12 +14,18 @@ namespace XboxControllerControls
         public GameObject shield;
         public float shield_cooldown;
         private float shield_timer;
+        private MetricManager mm;
+
+        public Image shieldCooldownDisplay;
+
 
         // Use this for initialization
         void Start()
         {
             player = transform.GetComponentInParent<Player>();
             shield_timer = 0;
+            mm = GameObject.Find("EventSystem").GetComponent<MetricManager>();
+
         }
 
         // Update is called once per frame
@@ -45,9 +52,9 @@ namespace XboxControllerControls
                                                                                                         //value 0 to 1
                 GameObject shield_instance = Instantiate(shield, new Vector3(transform.position.x + (transform.rotation.z-.7f)*-4.5f, transform.position.y + 1.25f, transform.position.z), transform.rotation) as GameObject;
                 shield_timer = shield_cooldown;
-                
+                shieldCooldownDisplay.fillAmount = 1;
+                mm.AddToMetric3(1);
             }
-            Debug.Log(transform.rotation.z);
 
 
         }

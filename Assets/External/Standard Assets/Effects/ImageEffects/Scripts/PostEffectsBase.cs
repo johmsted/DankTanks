@@ -101,7 +101,7 @@ namespace UnityStandardAssets.ImageEffects
         }
 
 
-        protected void Start ()
+		protected void Start ()
 		{
             CheckResources ();
         }
